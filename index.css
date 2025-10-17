@@ -1,0 +1,34 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #151739;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+#topBar { 
+    text-align: center;
+}
+
+#librarian {
+    align-self: center;
+}
+
+#dialogueBox {
+    visibility: hidden;
+    align-self: center;  
+    border: 2px solid white;
+    padding: 1em;
+    margin: 2em;  
+}
+
+#mapBox {
+    visibility: hidden;
+}
+
+section>ul {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0; 
+}
