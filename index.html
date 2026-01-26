@@ -3,6 +3,7 @@
 <title>Bad Idea Archive</title>
 <meta name="viewport" width="device-width, initial-scale=1.0"></meta>
 <link rel="stylesheet" href="index.css"></link>
+<link rel="stylesheet" href ="global.css"></link>
 
 <section id="topBar">
     <img src="images/badideainclogo.png" alt "BadIdeaGames">
@@ -11,7 +12,7 @@
 
 <article>
     <section id="library">
-        <button id = "librarian" onclick="startDialogue()">Talk to the Librarian</button>
+        <button id = "librarian" onclick="startDialogue('Lib_Welcome')">Talk to the Librarian</button>
         <section id = "dialogueBox">
             <h3 id="dialogueName">Librarian</h3>
             <p id="dialogueLine"></p>
@@ -23,21 +24,14 @@
         <button id = "mapButton" onclick="mapSwitcher()">Map</button>
         <section id = "mapBox">
             <img src="images/index/map.png" alt "Map" id="mapBackground">
-            <a href ="archive/archive.html"><img src="images/index/archiveicon.png" alt "Archive" class="mapIcon" id="archiveIcon"></a>
+            <a href ="archive/archive.html"><p>Archive</p></a>
             <a href ="garden/garden.html"><img src="images/index/garden.icon.png" alt "Garden" class="mapIcon" id="gardenIcon"></a>
         </section>
     </section>
 </article>
 
-<section id="socials">  
-        <ul>    
-            <li><a href="https://gamejolt.com/@BadIdeaInc" target="_blank"><img src="images/social/gamejoltpixel.png" class=social alt "Gamejolt"></a></li>
-            <li><a href="https://badideaincgames.itch.io" target="_blank"><img src="images/social/itchiopixelpng" class=social alt "ItchIo"></a></li>
-            <li><a href="https://www.youtube.com/@BadIdeaInc." target="_blank"><img src="images/social/youtubepixel.png" class=social alt "Youtube"></a></li>
-        </ul>
-        
-</section>
+<iframe src="social/social.html" id="socialFrame"></iframe>
 
-<script src="dialogue.js"></script>
+<script src="dialogue.js" type="module"></script>
 
 <script src="map.js"></script>

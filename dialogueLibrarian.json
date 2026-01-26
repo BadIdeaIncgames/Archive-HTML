@@ -1,0 +1,94 @@
+{
+    "dialogue": [
+        {
+            "scene": {
+                "id": "Lib_Welcome",
+                "name": "Librarian",
+                "lines": [
+                    {
+                        "Emotion": "Mystery",
+                        "Line": "Ah! A new traveler among the shelves!"
+                    }
+                ],
+                "responses": [
+                    {
+                        "response": "Who... what are you?",
+                        "next": "Lib_Intro_Who"
+                    },
+                    {
+                        "response": "Where am I?",
+                        "next": "Lib_Intro_Where"
+                    },
+                    {
+                        "response": "What's new?",
+                        "next": "Lib_Intro_New"
+                    },
+                    {
+                        "response": "I'll have a look around first",
+                        "next": ""
+                    }
+                ]
+            }
+        },
+        {
+            "scene": {
+                "id": "Lib_Intro_Who",
+                "name": "Librarian",
+                "lines": [
+                    {
+                        "Emotion": "Warm",
+                        "Line": "Huhm, must be new to this"
+                    },
+                    {
+                        "Emotion": "Pose",
+                        "Line": "I am the caretaker of course!"
+                    }, 
+                    {
+                        "Emotion": "Neutral",
+                        "Line": "So don't cause any trouble..."
+                    }, 
+                    {
+                        "Emotion": "Evil",
+                        "Line": "Or else."
+                    }
+                ]
+            }
+        },
+        {
+            "scene": {
+                "id": "Lib_Intro_Where",
+                "name": "Librarian",
+                "lines": [
+                    {
+                        "Emotion": "Warm",
+                        "Line": "A library huhm!"
+                    },
+                    {
+                        "Emotion": "Smart",
+                        "Line": "A very ancient one of course..."
+                    },
+                    {
+                        "Emotion": "Ominous",
+                        "Line": "Somewhere between the threads of reality."
+                    }
+                ]
+            }
+        },
+        {
+            "scene": {
+                "id": "Lib_Intro_New",
+                "name": "Librarian",
+                "lines": [
+                    {
+                        "Emotion": "Shocked",
+                        "Line": "We've only just opened huhm!"
+                    },
+                    {
+                        "Emotion": "Warm",
+                        "Line": "So from that perspective, everything's new!"
+                    }
+                ]
+            }
+        }
+    ]
+}

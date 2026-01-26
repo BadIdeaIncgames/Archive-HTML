@@ -1,0 +1,11 @@
+:root {
+    --main-bg-color: #151739;
+    --text-color: white;
+    --border_color: white;
+    --font: 'Arial', sans-serif;
+}
+
+iframe#socialFrame {
+    width: 100%;
+    height: 80px;
+}
