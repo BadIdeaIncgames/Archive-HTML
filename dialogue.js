@@ -1,13 +1,21 @@
 import { getData } from "./JSON_reader.js";
 
+//cd "C:\Users\blair\OneDrive\Documents\Web Design\Website"
+//python -m http.server 8000
+
+//http://localhost:8000
+
 let canStart = true;
 let dialogueBox;
 let dialogueLine;
 let nextButton;
 let typeSpeed = 40;
 
+let scene;
 let dialogue;
 let lineNum = 0;
+
+let data;
 
 const url = "./dialogueLibrarian.json"
 
@@ -16,19 +24,24 @@ async function startDialogue(id) {
 
     if (!canStart) return;
 
-    if (dialogueBox == null || dialogueLine == null || nextButton == null) {
-        let data = await getData(url)
+    clearButtonOptions();
 
-        for (let event of data.dialogue) {
-            if (event.scene.id === id) {
-                dialogue = event.scene.lines.map(lineObj => lineObj.Line);
-                break;
-            }
-        }
+    if (dialogueBox == null || dialogueLine == null || nextButton == null) {
+        data = await getData(url)
 
         dialogueBox = document.getElementById("dialogueBox");
         dialogueLine = document.getElementById("dialogueLine");
         nextButton = document.getElementById("nextButton");
+    }
+
+    if (data == null) return;
+
+    for (let event of data.dialogue) {
+            if (event.scene.id === id) {
+                scene = event.scene;
+                dialogue = event.scene.lines.map(lineObj => lineObj.Line);
+                break;
+        }
     }
 
     dialogueBox.style.visibility = "visible";
@@ -43,7 +56,7 @@ function typeDialogue(line, index) {
     if (dialogueLine == null) return;
 
     dialogueLine.innerHTML = line.slice(0, index);
-    if (index < dialogue[lineNum].length) {
+    if (index < line.length) {
         setTimeout(() => {
             typeDialogue(line, index + 1);
         }, typeSpeed);
@@ -60,19 +73,40 @@ function nextDialogue() {
         nextButton.style.visibility = "hidden";
         typeDialogue(dialogue[lineNum], 0);
     } else {
-
-        //Check for response options
-
-        //end dialogue
-        dialogueBox.style.visibility = "hidden";
         nextButton.style.visibility = "hidden";
         lineNum = 0;
         canStart = true;
+
+        //Check for response options
+        if (scene.responses && scene.responses.length > 0) {
+
+            createButtonOptions(scene.responses);
+            return;
+        }
+
+        //end dialogue
+        dialogueBox.style.visibility = "hidden";
     }
 }
 
-// window.startDialogue = startDialogue;
-// window.nextDialogue = nextDialogue;
+function createButtonOptions(responses) {
+    for (let response of responses) {
+        let button = document.createElement("button");
+        button.className = "dialogueOptionButton";
+        button.innerText = response.response;
+        button.onclick = () => startDialogue(response.next);
+        dialogueBox.appendChild(button);
+    }
+}
+
+function clearButtonOptions() {
+    if (!dialogueBox) return;
+    const buttons = dialogueBox.querySelectorAll('.dialogueOptionButton');
+    buttons.forEach(b => b.remove());
+}
+
+window.startDialogue = startDialogue;
+window.nextDialogue = nextDialogue;
 
 class DialogueData {
     constructor(lines) {
