@@ -1,16 +1,17 @@
 
-const pressedKeys = [];
+let pressedKeys = [];
 
-const code = "1234";
+const code = "1882";
 
 let unlocked = false;
 
 function KeyPadPress(value) {
-    if (pressedKeys.length >= code.length) {
-        tryToUnlock
-    }
 
     pressedKeys.push(value);
+
+    if (pressedKeys.length >= code.length) {
+        tryToUnlock(pressedKeys.join(''));
+    }
 }
 
 function tryToUnlock(attempt) {
@@ -19,6 +20,7 @@ function tryToUnlock(attempt) {
         unlocked = true;
         console.log("Door Unlocked");
     } else {
+        console.log("Incorrect Code");
         pressedKeys = [];
     }
 }
